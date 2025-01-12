@@ -3,11 +3,13 @@ next: ../configuration/
 ---
 
 # Python Virtual Environment
+
 It is possible to run Zigbee2MQTT in a virtual environment, this has been tested with a Raspberry Pi 3B+.
 
 This guide is similar to the [Running Zigbee2MQTT on Linux guide](./01_linux.md), follow the steps from there by replacing the steps with the ones from below.
 
 ## Installing
+
 ```bash
 # Clone Zigbee2MQTT repository
 sudo git clone --depth 1 https://github.com/Koenkk/zigbee2mqtt.git /opt/zigbee2mqtt
@@ -29,7 +31,10 @@ pip install --upgrade pip wheel setuptools
 pip install nodeenv
 
 # Init node environment
-nodeenv -p -n 16.15.0
+nodeenv -p -n 20.14.0
+
+# Install pnpm
+npm install -g pnpm
 
 # Deactivate and activate environment to be sure
 deactivate
@@ -37,13 +42,14 @@ source /opt/zigbee2mqtt/bin/activate
 
 # Install dependencies
 cd /opt/zigbee2mqtt
-npm ci
+pnpm i --frozen-lockfile
 
 # Deactivate environment
 deactivate
 ```
 
 ## Starting Zigbee2MQTT
+
 ```bash
 # Enter folder
 cd /opt/zigbee2mqtt
@@ -52,7 +58,7 @@ cd /opt/zigbee2mqtt
 source /opt/zigbee2mqtt/bin/activate
 
 # Start
-npm start
+pnpm start
 
 # ctrl + c to quit
 
@@ -61,7 +67,9 @@ deactivate
 ```
 
 ## (Optional) Running as a daemon with systemctl
+
 To run Zigbee2MQTT as daemon (in background) and start it automatically on boot we will run Zigbee2MQTT with systemctl.
+
 ```bash
 # Create a systemctl configuration file for Zigbee2MQTT
 sudo nano /etc/systemd/system/zigbee2mqtt.service
@@ -75,7 +83,12 @@ Description=zigbee2mqtt
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c 'source /opt/zigbee2mqtt/bin/activate; /opt/zigbee2mqtt/bin/npm start'
+Type=notify
+Environment=NODE_PATH=/opt/zigbee2mqtt/lib/node_modules
+Environment=NPM_CONFIG_PREFIX=/opt/zigbee2mqtt
+Environment=npm_config_prefix=/opt/zigbee2mqtt
+Environment=NODE_ENV=production
+ExecStart=/opt/zigbee2mqtt/bin/node index.js
 WorkingDirectory=/opt/zigbee2mqtt
 StandardOutput=inherit
 StandardError=inherit
@@ -86,33 +99,14 @@ User=pi
 WantedBy=multi-user.target
 ```
 
-Now continue with *Verify that the configuration works:* from the *Running Zigbee2MQTT guide*.
+Now continue with _Verify that the configuration works:_ from the _Running Zigbee2MQTT guide_.
 
 ## (For later) Update Zigbee2MQTT to the latest version
+
 To update Zigbee2MQTT to the latest version, execute:
 
 ```sh
-# Stop Zigbee2MQTT and go to directory
-sudo systemctl stop zigbee2mqtt
+# Run the update script from the Zigbee2MQTT directory
 cd /opt/zigbee2mqtt
-
-# Activate environment
-source /opt/zigbee2mqtt/bin/activate
-
-# Backup configuration
-cp -R data data-backup
-
-# Update
-git pull
-npm ci
-
-# Restore configuration
-cp -R data-backup/* data
-rm -rf data-backup
-
-# Deactivate environment
-deactivate
-
-# Start Zigbee2MQTT
-sudo systemctl start zigbee2mqtt
+./update.sh
 ```
