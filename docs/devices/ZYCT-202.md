@@ -19,7 +19,7 @@ pageClass: device-page
 | Vendor  | [Trust](/supported-devices/#v=Trust)  |
 | Description | Remote control |
 | Exposes | action, action_group, linkquality |
-| Picture | ![Trust ZYCT-202](https://www.zigbee2mqtt.io/images/devices/ZYCT-202.jpg) |
+| Picture | ![Trust ZYCT-202](https://www.zigbee2mqtt.io/images/devices/ZYCT-202.png) |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
@@ -41,7 +41,12 @@ Press and hold the smart group button (button with two bulbs) and wait until the
 ## Options
 *[How to use device type specific configuration](../guide/configuration/devices-groups.md#specific-device-options)*
 
-* `legacy`: Set to false to disable the legacy integration (highly recommended), will change structure of the published payload (default true). The value must be `true` or `false`
+* `simulated_brightness`: Simulate a brightness value. If this device provides a brightness_move_up or brightness_move_down action it is possible to specify the update interval and delta. The action_brightness_delta indicates the delta for each interval. Example:
+```yaml
+simulated_brightness:
+  delta: 20 # delta per interval, default = 20
+  interval: 200 # interval in milliseconds, default = 200
+```
 
 
 ## Exposes
@@ -52,7 +57,7 @@ Value can be found in the published state on the `action` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The possible values are: `on`, `off`, `stop`, `brightness_stop`, `brightness_move_up`, `brightness_move_down`.
 
-### Action_group (numeric)
+### Action group (numeric)
 Group where the action was triggered on.
 Value can be found in the published state on the `action_group` property.
 It's not possible to read (`/get`) or write (`/set`) this value.

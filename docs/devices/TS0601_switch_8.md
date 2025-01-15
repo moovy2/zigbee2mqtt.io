@@ -1,6 +1,6 @@
 ---
-title: "ZYXH TS0601_switch_8 control via MQTT"
-description: "Integrate your ZYXH TS0601_switch_8 via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
+title: "Tuya TS0601_switch_8 control via MQTT"
+description: "Integrate your Tuya TS0601_switch_8 via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
 addedAt: 2023-06-01T08:09:29
 pageClass: device-page
 ---
@@ -11,20 +11,25 @@ pageClass: device-page
 <!-- Do not use h1 or h2 heading within "## Notes"-Section. -->
 <!-- !!!! -->
 
-# ZYXH TS0601_switch_8
+# Tuya TS0601_switch_8
 
 |     |     |
 |-----|-----|
 | Model | TS0601_switch_8  |
-| Vendor  | [ZYXH](/supported-devices/#v=ZYXH)  |
-| Description | 8 Gang switch |
+| Vendor  | [Tuya](/supported-devices/#v=Tuya)  |
+| Description | ZYXH 8 gang switch |
 | Exposes | switch (state), linkquality |
-| Picture | ![ZYXH TS0601_switch_8](https://www.zigbee2mqtt.io/images/devices/TS0601_switch_8.jpg) |
+| Picture | ![Tuya TS0601_switch_8](https://www.zigbee2mqtt.io/images/devices/TS0601_switch_8.png) |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
+## Notes
 
+### Pairing
+Long press any button for 5 seconds until the LED indicator starts flashing rapidly to enter pairing mode.
 
+### Endpoints
+This device exposes 8 switches through endpoints l1-l8. Each switch can be controlled independently.
 <!-- Notes END: Do not edit below this line -->
 
 
