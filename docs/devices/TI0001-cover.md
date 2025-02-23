@@ -18,8 +18,8 @@ pageClass: device-page
 | Model | TI0001-cover  |
 | Vendor  | [Livolo](/supported-devices/#v=Livolo)  |
 | Description | Zigbee roller blind motor |
-| Exposes | cover (state, position), options, moving, linkquality |
-| Picture | ![Livolo TI0001-cover](https://www.zigbee2mqtt.io/images/devices/TI0001-cover.jpg) |
+| Exposes | cover (state, position), options, moving |
+| Picture | ![Livolo TI0001-cover](https://www.zigbee2mqtt.io/images/devices/TI0001-cover.png) |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
@@ -70,12 +70,5 @@ Can be set by publishing to `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"opti
 Motor is moving.
 Value can be found in the published state on the `moving` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
-If value equals `undefined` moving is ON, if `undefined` OFF.
-
-### Linkquality (numeric)
-Link quality (signal strength).
-Value can be found in the published state on the `linkquality` property.
-It's not possible to read (`/get`) or write (`/set`) this value.
-The minimal value is `0` and the maximum value is `255`.
-The unit of this value is `lqi`.
+If value equals `true` moving is ON, if `false` OFF.
 

@@ -1,6 +1,6 @@
 ---
-title: "TuYa TS0601_cover_4 control via MQTT"
-description: "Integrate your TuYa TS0601_cover_4 via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
+title: "Tuya TS0601_cover_4 control via MQTT"
+description: "Integrate your Tuya TS0601_cover_4 via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
 addedAt: 2023-04-27T17:39:26
 pageClass: device-page
 ---
@@ -11,15 +11,15 @@ pageClass: device-page
 <!-- Do not use h1 or h2 heading within "## Notes"-Section. -->
 <!-- !!!! -->
 
-# TuYa TS0601_cover_4
+# Tuya TS0601_cover_4
 
 |     |     |
 |-----|-----|
 | Model | TS0601_cover_4  |
-| Vendor  | [TuYa](/supported-devices/#v=TuYa)  |
+| Vendor  | [Tuya](/supported-devices/#v=Tuya)  |
 | Description | Cover |
-| Exposes | cover (state, position), motor_direction, motor_speed, opening_mode, set_upper_limit, set_bottom_limit, factory_reset, linkquality |
-| Picture | ![TuYa TS0601_cover_4](https://www.zigbee2mqtt.io/images/devices/TS0601_cover_4.jpg) |
+| Exposes | cover (state, position), motor_direction, motor_speed, opening_mode, set_upper_limit, set_bottom_limit, factory_reset |
+| Picture | ![Tuya TS0601_cover_4](https://www.zigbee2mqtt.io/images/devices/TS0601_cover_4.png) |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
@@ -38,14 +38,14 @@ To control this cover publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set`
 It's not possible to read (`/get`) this value.
 To change the position publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"position": VALUE}` where `VALUE` is a number between `0` and `100`.
 
-### Motor_direction (enum)
+### Motor direction (enum)
 Set the motor direction.
 Value can be found in the published state on the `motor_direction` property.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"motor_direction": NEW_VALUE}`.
 The possible values are: `normal`, `reversed`.
 
-### Motor_speed (numeric)
+### Motor speed (numeric)
 Motor speed.
 Value can be found in the published state on the `motor_speed` property.
 It's not possible to read (`/get`) this value.
@@ -53,38 +53,31 @@ To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/
 The minimal value is `0` and the maximum value is `255`.
 The unit of this value is `rpm`.
 
-### Opening_mode (enum)
+### Opening mode (enum)
 Opening mode.
 Value can be found in the published state on the `opening_mode` property.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"opening_mode": NEW_VALUE}`.
 The possible values are: `tilt`, `lift`.
 
-### Set_upper_limit (enum)
+### Set upper limit (enum)
 Set the upper limit, to reset limits use factory_reset.
-Value can be found in the published state on the `set_upper_limit` property.
+Value will **not** be published in the state.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"set_upper_limit": NEW_VALUE}`.
 The possible values are: `SET`.
 
-### Set_bottom_limit (enum)
+### Set bottom limit (enum)
 Set the bottom limit, to reset limits use factory_reset.
-Value can be found in the published state on the `set_bottom_limit` property.
+Value will **not** be published in the state.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"set_bottom_limit": NEW_VALUE}`.
 The possible values are: `SET`.
 
-### Factory_reset (binary)
+### Factory reset (binary)
 Factory reset the device.
-Value can be found in the published state on the `factory_reset` property.
+Value will **not** be published in the state.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"factory_reset": NEW_VALUE}`.
-If value equals `true` factory_reset is ON, if `false` OFF.
-
-### Linkquality (numeric)
-Link quality (signal strength).
-Value can be found in the published state on the `linkquality` property.
-It's not possible to read (`/get`) or write (`/set`) this value.
-The minimal value is `0` and the maximum value is `255`.
-The unit of this value is `lqi`.
+If value equals `true` factory reset is ON, if `false` OFF.
 
