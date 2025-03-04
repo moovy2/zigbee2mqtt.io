@@ -1,6 +1,6 @@
 ---
-title: "TuYa TS0601_cover_3 control via MQTT"
-description: "Integrate your TuYa TS0601_cover_3 via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
+title: "Tuya TS0601_cover_3 control via MQTT"
+description: "Integrate your Tuya TS0601_cover_3 via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
 addedAt: 2023-04-27T17:39:26
 pageClass: device-page
 ---
@@ -11,16 +11,15 @@ pageClass: device-page
 <!-- Do not use h1 or h2 heading within "## Notes"-Section. -->
 <!-- !!!! -->
 
-# TuYa TS0601_cover_3
+# Tuya TS0601_cover_3
 
 |     |     |
 |-----|-----|
 | Model | TS0601_cover_3  |
-| Vendor  | [TuYa](/supported-devices/#v=TuYa)  |
+| Vendor  | [Tuya](/supported-devices/#v=Tuya)  |
 | Description | Cover motor |
-| Exposes | battery, cover (state, position), reverse_direction, border, click_control, motor_fault, linkquality |
-| Picture | ![TuYa TS0601_cover_3](https://www.zigbee2mqtt.io/images/devices/TS0601_cover_3.jpg) |
-| White-label | Zemismart ZM16EL-03/33 |
+| Exposes | battery, cover (state, position), reverse_direction, border, click_control, motor_fault |
+| Picture | ![Tuya TS0601_cover_3](https://www.zigbee2mqtt.io/images/devices/TS0601_cover_3.png) |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
@@ -39,7 +38,7 @@ pageClass: device-page
 ## Exposes
 
 ### Battery (numeric)
-Remaining battery in %, can take up to 24 hours before reported..
+Remaining battery in %, can take up to 24 hours before reported.
 Value can be found in the published state on the `battery` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The minimal value is `0` and the maximum value is `100`.
@@ -51,7 +50,7 @@ To control this cover publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set`
 It's not possible to read (`/get`) this value.
 To change the position publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"position": VALUE}` where `VALUE` is a number between `0` and `100`.
 
-### Reverse_direction (enum)
+### Reverse direction (enum)
 Reverse the motor direction.
 Value can be found in the published state on the `reverse_direction` property.
 It's not possible to read (`/get`) this value.
@@ -64,22 +63,15 @@ It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"border": NEW_VALUE}`.
 The possible values are: `up`, `down`, `up_delete`, `down_delete`, `remove_top_bottom`.
 
-### Click_control (enum)
+### Click control (enum)
 Single motor steps.
 Value can be found in the published state on the `click_control` property.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"click_control": NEW_VALUE}`.
 The possible values are: `up`, `down`.
 
-### Motor_fault (binary)
+### Motor fault (binary)
 Value can be found in the published state on the `motor_fault` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
-If value equals `true` motor_fault is ON, if `false` OFF.
-
-### Linkquality (numeric)
-Link quality (signal strength).
-Value can be found in the published state on the `linkquality` property.
-It's not possible to read (`/get`) or write (`/set`) this value.
-The minimal value is `0` and the maximum value is `255`.
-The unit of this value is `lqi`.
+If value equals `true` motor fault is ON, if `false` OFF.
 

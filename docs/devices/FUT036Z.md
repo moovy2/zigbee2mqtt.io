@@ -1,6 +1,6 @@
 ---
-title: "Miboxer FUT036Z control via MQTT"
-description: "Integrate your Miboxer FUT036Z via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
+title: "MiBoxer FUT036Z control via MQTT"
+description: "Integrate your MiBoxer FUT036Z via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
 addedAt: 2021-09-01T18:11:17Z
 pageClass: device-page
 ---
@@ -11,15 +11,15 @@ pageClass: device-page
 <!-- Do not use h1 or h2 heading within "## Notes"-Section. -->
 <!-- !!!! -->
 
-# Miboxer FUT036Z
+# MiBoxer FUT036Z
 
 |     |     |
 |-----|-----|
 | Model | FUT036Z  |
-| Vendor  | [Miboxer](/supported-devices/#v=Miboxer)  |
+| Vendor  | [MiBoxer](/supported-devices/#v=MiBoxer)  |
 | Description | Single color LED controller |
-| Exposes | light (state, brightness), linkquality |
-| Picture | ![Miboxer FUT036Z](https://www.zigbee2mqtt.io/images/devices/FUT036Z.jpg) |
+| Exposes | light (state, brightness), effect, do_not_disturb |
+| Picture | ![MiBoxer FUT036Z](https://www.zigbee2mqtt.io/images/devices/FUT036Z.png) |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
@@ -69,10 +69,17 @@ To do this send a payload like below to `zigbee2mqtt/FRIENDLY_NAME/set`
 }
 ````
 
-### Linkquality (numeric)
-Link quality (signal strength).
-Value can be found in the published state on the `linkquality` property.
-It's not possible to read (`/get`) or write (`/set`) this value.
-The minimal value is `0` and the maximum value is `255`.
-The unit of this value is `lqi`.
+### Effect (enum)
+Triggers an effect on the light (e.g. make light blink for a few seconds).
+Value will **not** be published in the state.
+It's not possible to read (`/get`) this value.
+To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"effect": NEW_VALUE}`.
+The possible values are: `blink`, `breathe`, `okay`, `channel_change`, `finish_effect`, `stop_effect`.
+
+### Do not disturb (binary)
+Do not disturb mode, when enabled this function will keep the light OFF after a power outage.
+Value can be found in the published state on the `do_not_disturb` property.
+It's not possible to read (`/get`) this value.
+To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"do_not_disturb": NEW_VALUE}`.
+If value equals `true` do not disturb is ON, if `false` OFF.
 

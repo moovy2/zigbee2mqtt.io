@@ -18,8 +18,8 @@ pageClass: device-page
 | Model | AU-A1ZB2WDM  |
 | Vendor  | [Aurora Lighting](/supported-devices/#v=Aurora%20Lighting)  |
 | Description | AOne 250W smart rotary dimmer module |
-| Exposes | light (state, brightness), effect, power_on_behavior, backlight_led, linkquality |
-| Picture | ![Aurora Lighting AU-A1ZB2WDM](https://www.zigbee2mqtt.io/images/devices/AU-A1ZB2WDM.jpg) |
+| Exposes | backlight_led, light (state, brightness), effect, power_on_behavior |
+| Picture | ![Aurora Lighting AU-A1ZB2WDM](https://www.zigbee2mqtt.io/images/devices/AU-A1ZB2WDM.png) |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
@@ -43,6 +43,13 @@ The connected load, and the red LED indicator behind the dimmer knob will flash 
 
 
 ## Exposes
+
+### Backlight led (binary)
+Enable or disable the blue backlight LED.
+Value can be found in the published state on the `backlight_led` property.
+It's not possible to read (`/get`) this value.
+To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"backlight_led": NEW_VALUE}`.
+If value equals `ON` backlight led is ON, if `OFF` OFF.
 
 ### Light 
 This light supports the following features: `state`, `brightness`.
@@ -77,24 +84,10 @@ It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"effect": NEW_VALUE}`.
 The possible values are: `blink`, `breathe`, `okay`, `channel_change`, `finish_effect`, `stop_effect`.
 
-### Power_on_behavior (enum)
+### Power-on behavior (enum)
 Controls the behavior when the device is powered on after power loss.
 Value can be found in the published state on the `power_on_behavior` property.
 To read (`/get`) the value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/get` with payload `{"power_on_behavior": ""}`.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"power_on_behavior": NEW_VALUE}`.
 The possible values are: `off`, `on`, `toggle`, `previous`.
-
-### Backlight_led (binary)
-Enable or disable the blue backlight LED.
-Value can be found in the published state on the `backlight_led` property.
-It's not possible to read (`/get`) this value.
-To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"backlight_led": NEW_VALUE}`.
-If value equals `ON` backlight_led is ON, if `OFF` OFF.
-
-### Linkquality (numeric)
-Link quality (signal strength).
-Value can be found in the published state on the `linkquality` property.
-It's not possible to read (`/get`) or write (`/set`) this value.
-The minimal value is `0` and the maximum value is `255`.
-The unit of this value is `lqi`.
 

@@ -18,8 +18,8 @@ pageClass: device-page
 | Model | JS-MC-SENSOR-ZB  |
 | Vendor  | [JAVIS](/supported-devices/#v=JAVIS)  |
 | Description | Microwave sensor |
-| Exposes | occupancy, illuminance_lux, led_enable, keep_time, sensitivity, illuminance_calibration, linkquality |
-| Picture | ![JAVIS JS-MC-SENSOR-ZB](https://www.zigbee2mqtt.io/images/devices/JS-MC-SENSOR-ZB.jpg) |
+| Exposes | occupancy, illuminance, led_enable, keep_time, sensitivity, illuminance_calibration |
+| Picture | ![JAVIS JS-MC-SENSOR-ZB](https://www.zigbee2mqtt.io/images/devices/JS-MC-SENSOR-ZB.png) |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
@@ -28,6 +28,11 @@ pageClass: device-page
 <!-- Notes END: Do not edit below this line -->
 
 
+
+## Options
+*[How to use device type specific configuration](../guide/configuration/devices-groups.md#specific-device-options)*
+
+* `illuminance_calibration`: Calibrates the illuminance value (percentual offset), takes into effect on next report of device. The value must be a number.
 
 
 ## Exposes
@@ -38,20 +43,20 @@ Value can be found in the published state on the `occupancy` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 If value equals `true` occupancy is ON, if `false` OFF.
 
-### Illuminance_lux (numeric)
-Measured illuminance in lux.
-Value can be found in the published state on the `illuminance_lux` property.
+### Illuminance (numeric)
+Measured illuminance.
+Value can be found in the published state on the `illuminance` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The unit of this value is `lx`.
 
-### Led_enable (binary)
+### Led enable (binary)
 Enabled LED.
 Value can be found in the published state on the `led_enable` property.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"led_enable": NEW_VALUE}`.
-If value equals `true` led_enable is ON, if `false` OFF.
+If value equals `true` led enable is ON, if `false` OFF.
 
-### Keep_time (enum)
+### Keep time (enum)
 PIR keep time 0:5s|1:30s|2:60s|3:180s|4:300s|5:600s|6:1200s|7:1800s.
 Value can be found in the published state on the `keep_time` property.
 It's not possible to read (`/get`) this value.
@@ -64,17 +69,10 @@ It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"sensitivity": NEW_VALUE}`.
 The possible values are: `25`, `50`, `75`, `100`.
 
-### Illuminance_calibration (numeric)
+### Illuminance calibration (numeric)
 Illuminance calibration.
 Value can be found in the published state on the `illuminance_calibration` property.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"illuminance_calibration": NEW_VALUE}`.
 The minimal value is `-10000` and the maximum value is `10000`.
-
-### Linkquality (numeric)
-Link quality (signal strength).
-Value can be found in the published state on the `linkquality` property.
-It's not possible to read (`/get`) or write (`/set`) this value.
-The minimal value is `0` and the maximum value is `255`.
-The unit of this value is `lqi`.
 
